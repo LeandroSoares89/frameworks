@@ -1,6 +1,7 @@
-package persistencia;
+	package persistencia;
 
 import org.hibernate.SessionFactory;
+import org.hibernate.boot.registry.StandardServiceRegistry;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.cfg.Configuration;
 
@@ -14,13 +15,16 @@ public class HibernateUtil {
 			
 			StandardServiceRegistryBuilder registradorServico = new StandardServiceRegistryBuilder();
 			registradorServico.applySettings(cfg.getProperties());
-			StandardServiceRegistry servico = regidtradorServico.build();
+			StandardServiceRegistry servico = registradorServico.build();
+			
 			return cfg.buildSessionFactory(servico);
 			
 		}catch(Throwable e){
 			System.out.println("Criação inicial do objeto SessionFactory falhou. Erro:" +e);
-			throw new
+			throw new ExceptionInInitializerError(e);
 		}
+	}
+	public static SessionFactory getSessionFactory(){
 		return sessionFactory;
 		
 	}
