@@ -41,8 +41,8 @@ public class ProdutoCtrl implements Serializable {
 		produto = new Produto();
 		return "form_produto";
 	}
-	public String actionExcluir(Produto p){
-		ProdutoDAO.excluir(p);
+	public String actionExcluir(){
+		ProdutoDAO.excluir(produto);
 		return "lista_produto";
 		
 	}
