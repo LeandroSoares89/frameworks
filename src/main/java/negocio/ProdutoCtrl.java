@@ -15,6 +15,16 @@ public class ProdutoCtrl implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 	private Produto produto;
+	private String filtro; 
+
+	
+	public String getFiltro() {
+		return filtro;
+	}
+
+	public void setFiltro(String filtro) {
+		this.filtro = filtro;
+	}
 
 	public Produto getProduto() {
 		return produto;
@@ -25,7 +35,12 @@ public class ProdutoCtrl implements Serializable {
 	}
 
 	public List<Produto> getListagem() {
-		return ProdutoDAO.listagem("");
+		if(filtro == null){
+			
+			return ProdutoDAO.listagem("");
+			
+		}else
+		return ProdutoDAO.listagem(filtro);
 	}
 
 	public String actionGravar() {

@@ -7,48 +7,56 @@
 	xmlns:f="http://java.sun.com/jsf/core">
 
 <h:head>
-<title>Lista de produtos</title>
+	<title>Lista de produtos</title>
 </h:head>
 <h:body>
-<h:form>
-<h:dataTable var="ObjProduto" value="#{produtoCtrl.listagem}">
-<f:facet name="header">
-<h:outputText value="Listagem de Produtos"/>
-</f:facet>
-<h:column>
-<f:facet name="header">
-<h:outputText value="ID"/>
-</f:facet>
-<h:outputText value="#{ObjProduto.id}"/>
-</h:column>
+	<h:form>
+	<h:panelGrid columns="3">
+	<h:outputText value="Digite o nome:"/>
+	<h:inputText value="#{produtoCtrl.filtro}"/>
+	<h:commandButton value="Pesquisar"  action="lista_produto"></h:commandButton>
+	</h:panelGrid>
+		<h:dataTable var="ObjProduto" value="#{produtoCtrl.listagem}">
+			<f:facet name="header">
+				<h:outputText value="Listagem de Produtos" />
+			</f:facet>
+			<h:column>
+				<f:facet name="header">
+					<h:outputText value="ID" />
+				</f:facet>
+				<h:outputText value="#{ObjProduto.id}" />
+			</h:column>
 
-<h:column>
-<f:facet name="header">
-<h:outputText value="Nome"/>
-</f:facet>
-<h:outputText value="#{ObjProduto.nome}"/>
-</h:column>
+			<h:column>
+				<f:facet name="header">
+					<h:outputText value="Nome" />
+				</f:facet>
+				<h:outputText value="#{ObjProduto.nome}" />
+			</h:column>
 
-<h:column>
-<f:facet name="header">
-<h:outputText value="Preço"/>
-</f:facet>
-<h:outputText value="#{ObjProduto.preco}"/>
-</h:column>
+			<h:column>
+				<f:facet name="header">
+					<h:outputText value="Preço" />
+				</f:facet>
+				<h:outputText value="#{ObjProduto.preco}" />
+			</h:column>
 
-<h:column>
-<h:commandButton value="Alterar"  action="form_produto" >
-<f:setPropertyActionListener value="#{ObjProduto}" target="#{produtoCtrl.produto}"></f:setPropertyActionListener>
-</h:commandButton>
-<h:commandButton value="Excluir"  action="#{produtoCtrl.actionExcluir}">
-<f:setPropertyActionListener value="#{ObjProduto}" target="#{produtoCtrl.produto}"></f:setPropertyActionListener>
-</h:commandButton>
-</h:column>
+			<h:column>
+				<h:commandButton value="Alterar" action="form_produto">
+					<f:setPropertyActionListener value="#{ObjProduto}"
+						target="#{produtoCtrl.produto}"></f:setPropertyActionListener>
+				</h:commandButton>
+				<h:commandButton value="Excluir"
+					action="#{produtoCtrl.actionExcluir}">
+					<f:setPropertyActionListener value="#{ObjProduto}"
+						target="#{produtoCtrl.produto}"></f:setPropertyActionListener>
+				</h:commandButton>
+			</h:column>
 
-</h:dataTable>
-<h:commandButton value="Cancelar" action="index" />
+		</h:dataTable>
+		<h:commandButton value="Cancelar" action="index" />
 
-</h:form>
+	</h:form>
 
 
 </h:body>
